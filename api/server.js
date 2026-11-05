@@ -1,7 +1,7 @@
 // API local del Directorio de Negocios de Dolores Hidalgo.
-// Sin dependencias: solo el módulo http de Node.   Uso: node server.js
+// Sin dependencias: solo el módulo http de Node. Uso: node server.js
 const http = require('http');
- 
+
 let siguienteId = 6;
 const negocios = [
   { id: 1, nombre: 'Nieves de la Plaza', categoria: 'Nevería', telefono: '418-100-0001', favorito: true },
@@ -10,7 +10,7 @@ const negocios = [
   { id: 4, nombre: 'Dulces Cajeta Real', categoria: 'Dulcería', telefono: '418-100-0004', favorito: true },
   { id: 5, nombre: 'Papelería El Cura', categoria: 'Papelería', telefono: '418-100-0005', favorito: false },
 ];
- 
+
 function responder(res, status, datos) {
   res.writeHead(status, {
     'Content-Type': 'application/json; charset=utf-8',
@@ -20,7 +20,7 @@ function responder(res, status, datos) {
   });
   res.end(datos === undefined ? '' : JSON.stringify(datos));
 }
- 
+
 function leerCuerpo(req) {
   return new Promise((ok, fallo) => {
     let texto = '';
@@ -30,17 +30,18 @@ function leerCuerpo(req) {
     });
   });
 }
- 
+
 const servidor = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://localhost');
   const partes = url.pathname.split('/').filter(Boolean); // ['negocios', '3']
   console.log(new Date().toLocaleTimeString(), req.method, url.pathname);
- 
+
   if (req.method === 'OPTIONS') return responder(res, 204);
   if (url.pathname === '/salud') return responder(res, 200, { ok: true });
   if (partes[0] !== 'negocios') return responder(res, 404, { error: 'Ruta no encontrada' });
- 
+
   const id = partes[1] ? Number(partes[1]) : null;
+
   try {
     if (req.method === 'GET' && id === null) {
       const q = (url.searchParams.get('q') || '').toLowerCase();
@@ -75,7 +76,7 @@ const servidor = http.createServer(async (req, res) => {
     return responder(res, 400, { error: 'JSON inválido' });
   }
 });
- 
+
 const PUERTO = process.env.PORT || 3000;
 // 0.0.0.0 permite que el celular (misma red Wi-Fi) llegue a tu computadora.
 servidor.listen(PUERTO, '0.0.0.0', () =>
