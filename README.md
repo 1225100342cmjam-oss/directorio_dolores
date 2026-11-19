@@ -26,7 +26,9 @@ VERDE
 <img width="512" height="364" alt="image" src="https://github.com/user-attachments/assets/a08f83ff-f5ee-4108-a115-a8405c48f3f6" />
 
 App Funcionando 
+<img width="1299" height="899" alt="image" src="https://github.com/user-attachments/assets/ad53a65c-2df7-486a-a4fe-5ed93fa77ce0" />
 ![Uploading image.png…]()
+
 
 
 
