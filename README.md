@@ -25,6 +25,10 @@ ROJO
 VERDE 
 <img width="512" height="364" alt="image" src="https://github.com/user-attachments/assets/a08f83ff-f5ee-4108-a115-a8405c48f3f6" />
 
+App Funcionando 
+![Uploading image.png…]()
+
+
 
 #######################################################################################################################
 <img width="1041" height="288" alt="image" src="https://github.com/user-attachments/assets/bc3e3ab1-308a-4ef1-99ee-204d6e69803e" />
